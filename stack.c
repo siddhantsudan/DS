@@ -1,71 +1,56 @@
 #include<stdio.h>
 #include<conio.h>
-#include<stdlib.h>
-#include<stdbool.h>
-
-int top=-1;
-int a[3];
-//int size=sizeof(a)/sizeof(int);
-void push(int data);
+#define SIZE 3
+void push( int x);
 void pop();
-void display();
-bool IsEmpty();
-main()
+void print();
+
+int a[SIZE];
+int top=-1;
+void main()
 {
-//	int* a=(int*)malloc(sizeof(int)*3);
 	push(10);
+	print();
 	push(20);
+		print();
 	push(30);
+		print();
+		push(50);
 	pop();
 	pop();
-	display();
+	pop();
+	pop();
+	
 	getch();
 }
 
-
-void push(int data)
+void push(x)
 {
-	a[++top]=data;
-//	int size=sizeof(a)/sizeof(int);
-//	if(top==(size-1))
-//	{
-//		int b[2*size];
-//		int i;
-//		for( i=0;i<(size);i++)
-//		{
-//			b[i]=a[i];
-//		}
-	//a=realloc(a, 10 * sizeof(int));
-		
-//	}
+	if(top==(SIZE-1))
+	printf("Stack Overflow\n");
+	else
+	{
+		top++;
+		a[top]=x;
+	}
 }
-
 void pop()
 {
-	if(IsEmpty())
-	printf("Empty");
-	else
-	{
-			printf("Value %d popped out",a[top]);
-			top--;
-	}
-
-}
-
-bool IsEmpty()
-{
 	if(top==-1)
-	return true;
+	printf("Stack is Empty\n");
 	else
-	return false;
-}
-
-void display()
-{
-	int temp=0;
-	while(temp!=(top+1))
 	{
-		printf("%d ",a[temp]);
-		temp++;
+	printf("Popped ot %d\n",a[top]);
+	top--;
 	}
+
+}
+void print()
+{
+	int x=0;
+	for(x=0;x<=top;x++)
+	{
+		printf("%d ",a[x]);
+	}
+	printf("\n");
 }
